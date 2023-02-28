@@ -7,7 +7,7 @@ const SALT_ROUNDS = 5;
 
 const Guest = db.define("guest", {
   createdAt: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE,
   },
 });
 
