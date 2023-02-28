@@ -1,6 +1,8 @@
 const router = require('express').Router()
-const { models: { User }} = require('../db')
+const { models: { User, Order, Product }} = require('../db')
 module.exports = router
+
+
 
 router.get('/', async (req, res, next) => {
   try {
@@ -15,3 +17,20 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+/////////placeholder routes ////////////////////
+//Reminder: these are placeholders route. Sequelize commands may need adjustments
+
+////users//////////
+
+router.get('/', async (req, res, next)=>{
+  try{
+    const user = await User.findByPk(req.params.id,{include:[Order]});
+    res.json(user);
+  }
+  catch(err){
+    next(err)
+  }
+})
+
+
+
