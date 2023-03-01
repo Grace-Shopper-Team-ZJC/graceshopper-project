@@ -8,19 +8,19 @@ const SALT_ROUNDS = 5;
 const Product = db.define("product", {
   name: {
     type: Sequelize.STRING,
-    allowNull: false,
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: false,
   },
   price: {
-    type: Sequelize.FLOAT,
-    allowNull: false,
+    type: Sequelize.DECIMAL(10, 2),
   },
   image: {
     type: Sequelize.STRING,
-    allowNull: false,
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
 });
 
