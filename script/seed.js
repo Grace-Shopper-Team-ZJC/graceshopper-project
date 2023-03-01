@@ -100,12 +100,12 @@ const seed = async () => {
     const item1 = await CTable.create({desiredQuantity: 2});
     const item2 = await CTable.create({desiredQuantity: 1});
     
-    item1.setProduct(apples);
-    item2.setProduct(oranges);
+    await item1.setProduct(apples);
+    await item2.setProduct(oranges);
+   
+    //const cart1 = await Cart.create({});
 
-    const cart1 = await Cart.create([apples, oranges]);
-
-    billy.setCart(cart1);
+    //billy.setCart(cart1);
     
 
     //faker code below////////
