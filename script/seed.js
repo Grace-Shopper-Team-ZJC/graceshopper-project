@@ -88,8 +88,8 @@ const seed = async () => {
     const davis = await User.create({username: "davis1999", password: "1999pass"});
 
 
-    await Guest.create();
-    await Guest.create();
+    const guest1 = await Guest.create();
+    const guest2 = await Guest.create();
 
     const bananas = await Product.create({name: "Bananas", description: "It's bananas.", price: 2.99, image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg", quantity: 11});
 
@@ -103,10 +103,25 @@ const seed = async () => {
     await item1.setProduct(apples);
     await item2.setProduct(oranges);
    
-    //const cart1 = await Cart.create({});
+    const cart1 = await Cart.create();
+    const cart2 = await Cart.create();
+    const cart3 = await Cart.create();
 
-    //billy.setCart(cart1);
+    await billy.setCart(cart1);
+    await guest1.setCart(cart2);
+    await guest2.setCart(cart3);
     
+    await item1.setCart(cart1);
+    await item2.setCart(cart3);
+
+    //await cart1.setCheckoutTable(item1);
+
+    const order1 = await Order.create({customerName: "Bob Billy Bob", customerEmail: "billy@email.com", shippingAddress: "123 Fake Street"});
+    const order2 = await Order.create({customerName: "Lucy Jones", customerEmail: "lucy@email.com", shippingAddress: "555 McFaker Drive"});
+    
+    await order1.setUser(billy);
+    await order2.setUser(lisa);
+    await cart1.setOrder(order1);
 
     //faker code below////////
 /* 

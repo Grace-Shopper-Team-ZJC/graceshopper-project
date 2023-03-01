@@ -20,9 +20,11 @@ Cart.belongsTo(User);
 Guest.hasOne(Cart);
 Cart.belongsTo(Guest);
 
+Product.hasMany(CTable)
 CTable.belongsTo(Product);
 
 Cart.hasMany(CTable);
+CTable.belongsTo(Cart);
 
 
 ///
