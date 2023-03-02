@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUsers, fetchUsersAsync } from './userManageSlice';
 
@@ -6,16 +7,17 @@ const UserManagement = ()=>{
     const users = useSelector(selectUsers);
     const dispatch = useDispatch();
 
+    console.log(users);
     useEffect(()=>{
-        dispatchEvent(fetchUsersAsync());
+        dispatch(fetchUsersAsync());
     }, [dispatch]);
 
     return(
         <div id="allusers">
-            <p>this is where you would view all registered users</p>
+            <h3>Registered Users:</h3>
             {users && users.length ? users.map((users)=>(
                 <div id = "userdiv" key ={`users ${users.id}`}>
-                    <h3>Username: {users.username}, Password: {users.password}</h3>
+                    <p>Username: {users.username}, id: {users.id}</p>
                 </div>
             )):null}
         </div>
