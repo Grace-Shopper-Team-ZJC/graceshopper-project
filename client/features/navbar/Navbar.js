@@ -5,12 +5,20 @@ import { logout } from "../../app/store";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
     dispatch(logout());
     navigate("/login");
   };
+
+  // calculate cart quantity
+  // const cart = useSelector((state) => state.cart);
+  // let cartTotal = 0;
+  // for (const item of cart.items) {
+  //   cartTotal += item.quantity;
+  // }
 
   return (
     <div>
@@ -20,6 +28,8 @@ const Navbar = () => {
           <div>
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
+            <Link to="/products">All Products</Link>
+            {/* <Link to="/cart">Cart ({cartTotal})</Link> */}
             <button type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
@@ -29,6 +39,8 @@ const Navbar = () => {
             {/* The navbar will show these links before you log in */}
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
+            <Link to="/products">All Products</Link>
+            {/* <Link to="/cart">Cart ({cartTotal})</Link> */}
           </div>
         )}
       </nav>
