@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
 
 ////users//////////
 
-router.get("/", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id, { include: [Order] });
     res.json(user);

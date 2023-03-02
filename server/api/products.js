@@ -6,7 +6,8 @@ module.exports = router
 
 
 ////products////////
-//Reminder: these are placeholders route. Sequelize commands may need adjustments
+//Reminder: these are placeholders route. Sequelize commands may need adjustments 
+// --- updated: 3/2/23. changed paths to match router.use in index.js
 
 
 //GET all products
@@ -20,7 +21,7 @@ router.get('/', async (req, res, next)=>{
   })
   
   //GET single product
-  router.get('/', async (req, res, next)=>{
+  router.get('/:id', async (req, res, next)=>{
     try{
       res.send(await Product.findByPk(req.params.id));
     }
@@ -39,7 +40,7 @@ router.get('/', async (req, res, next)=>{
     }
   })
   // PUT product
-  router.put('/', async (req, res, next)=>{
+  router.put('/:id', async (req, res, next)=>{
     try{
         const product = await Product.findByPk(req.params.id);
         res.send(await product.update(req.body));
@@ -51,7 +52,7 @@ router.get('/', async (req, res, next)=>{
 
 
   //DELETE product
-  router.delete('/',async (req, res, next)=>{
+  router.delete('/:id',async (req, res, next)=>{
     try{
       const product = await Product.findByPk(req.params.id);
       await product.destroy();

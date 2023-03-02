@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import { me } from "./store";
+import UserManagement from "../features/UserManage/UserManagement";
 
 /**
  * COMPONENT
@@ -37,6 +38,12 @@ const AppRoutes = () => {
           <Route
             path="/signup"
             element={<AuthForm name="signup" displayName="Sign Up" />}
+          />
+          
+          {/* placeholder route for testing admin view */}
+          <Route 
+            path = "/users"
+            element={<UserManagement name="users" displayName="Admin: view users"/>} 
           />
         </Routes>
       )}
