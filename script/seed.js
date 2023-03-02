@@ -84,26 +84,55 @@ const seed = async () => {
     // Sync the database and delete any existing data
     await db.sync({ force: true });
 
-    const billy = await User.create({username: "billy1234", password: "password123", });
-    const lisa = await User.create({username: "lisalisa", password: "123pwpw", });
-    const davis = await User.create({username: "davis1999", password: "1999pass"});
-
+    const billy = await User.create({
+      username: "billy1234",
+      password: "password123",
+    });
+    const lisa = await User.create({
+      username: "lisalisa",
+      password: "123pwpw",
+    });
+    const davis = await User.create({
+      username: "davis1999",
+      password: "1999pass",
+    });
 
     const guest1 = await Guest.create();
     const guest2 = await Guest.create();
 
-    const bananas = await Product.create({name: "Bananas", description: "It's bananas.", price: 2.99, image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg", quantity: 11});
+    const bananas = await Product.create({
+      name: "Bananas",
+      description: "It's bananas.",
+      price: 2.99,
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg",
+      quantity: 11,
+    });
 
-    const apples = await Product.create({name: "Apple", description: "it's an apple", price: 3.45, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Apple-003.jpg/576px-Apple-003.jpg", quantity: 5});
+    const apples = await Product.create({
+      name: "Apple",
+      description: "it's an apple",
+      price: 3.45,
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Apple-003.jpg/576px-Apple-003.jpg",
+      quantity: 5,
+    });
 
-    const oranges = await Product.create({name: "Orange", description: "it's an orange.", price: 2.22, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Orange-Fruit-Pieces.jpg/800px-Orange-Fruit-Pieces.jpg", quantity: 3});
+    const oranges = await Product.create({
+      name: "Orange",
+      description: "it's an orange.",
+      price: 2.22,
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Orange-Fruit-Pieces.jpg/800px-Orange-Fruit-Pieces.jpg",
+      quantity: 3,
+    });
 
-    const item1 = await CTable.create({desiredQuantity: 2});
-    const item2 = await CTable.create({desiredQuantity: 1});
-    
+    const item1 = await CTable.create({ desiredQuantity: 2 });
+    const item2 = await CTable.create({ desiredQuantity: 1 });
+
     await item1.setProduct(apples);
     await item2.setProduct(oranges);
-   
+
     const cart1 = await Cart.create();
     const cart2 = await Cart.create();
     const cart3 = await Cart.create();
@@ -111,21 +140,29 @@ const seed = async () => {
     await billy.setCart(cart1);
     await guest1.setCart(cart2);
     await guest2.setCart(cart3);
-    
+
     await item1.setCart(cart1);
     await item2.setCart(cart3);
 
     //await cart1.setCheckoutTable(item1);
 
-    const order1 = await Order.create({customerName: "Bob Billy Bob", customerEmail: "billy@email.com", shippingAddress: "123 Fake Street"});
-    const order2 = await Order.create({customerName: "Lucy Jones", customerEmail: "lucy@email.com", shippingAddress: "555 McFaker Drive"});
-    
+    const order1 = await Order.create({
+      customerName: "Bob Billy Bob",
+      customerEmail: "billy@email.com",
+      shippingAddress: "123 Fake Street",
+    });
+    const order2 = await Order.create({
+      customerName: "Lucy Jones",
+      customerEmail: "lucy@email.com",
+      shippingAddress: "555 McFaker Drive",
+    });
+
     await order1.setUser(billy);
     await order2.setUser(lisa);
     await cart1.setOrder(order1);
 
     //faker code below////////
-/* 
+    /* 
     // create users
     await Promise.all(
       userData.map((user) => {

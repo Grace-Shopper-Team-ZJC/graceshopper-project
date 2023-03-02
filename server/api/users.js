@@ -2,7 +2,6 @@ const router = require("express").Router();
 const {
   models: { User, Order, Product },
 } = require("../db");
-module.exports = router;
 
 router.get("/", async (req, res, next) => {
   try {
@@ -12,8 +11,10 @@ router.get("/", async (req, res, next) => {
       // send everything to anyone who asks!
       attributes: ["id", "username"],
     });
+    console.log(users);
     res.json(users);
   } catch (err) {
+    console.log(err);
     next(err);
   }
 });
@@ -25,8 +26,12 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id, { include: [Order] });
+    console.log(user);
     res.json(user);
   } catch (err) {
+    console.log(err);
     next(err);
   }
 });
+
+module.exports = router;
