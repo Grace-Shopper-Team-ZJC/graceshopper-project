@@ -3,6 +3,7 @@ import logger from "redux-logger";
 import authReducer from "../features/auth/authSlice";
 import userReducer from "../features/user/userSlice";
 import userManageSlice from "../features/userManagement/userManageSlice";
+
 const store = configureStore({
   reducer: {
     auth: authReducer,
