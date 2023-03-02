@@ -52,6 +52,7 @@ for (let i = 0; i < 20; i++) {
 }
 
 // fake cart items for each cart
+// creating 20 fake cart with 5 items per cart
 for (let i = 0; i < 20; i++) {
   const cartItems = [];
   for (let j = 0; j < 5; j++) {
@@ -133,7 +134,6 @@ const seed = async () => {
     );
 
     // create Guests and Carts with CartItems for each guest
-    // create guests and carts for each guest
     await Promise.all(
       guestData.map(async (guest) => {
         // create a new guest instance and store it in a variable
