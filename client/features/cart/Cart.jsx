@@ -1,42 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+// Import actions and selectors from cartSlice
+import {
+  selectCartItems,
+  clearCart,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} from "./cartSlice";
+
+// Import the CartItem component
 import CartItem from "./CartItem";
 
+// Cart component is responsible for displaying the entire cart
 const Cart = () => {
-  const [cartItems, setCartItems] = useState();
+  // Use the useSelector hook to get the cart items from the store
+  const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
 
-  // increase item in cart by one
-  const handleIncrease = (id) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-    );
-    setCartItems(updatedCartItems);
+  // function to handle clearing the cart
+  const handleClearCart = () => {
+    dispatch(clearCart());
   };
 
-  // decrease item in cart by one
-  const handleDecrease = (id) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-    );
-    setCartItems(updatedCartItems);
+  // function for removing an item from the cart
+  const handleRemoveFromCart = (itemId) => {
+    dispatch(removeFromCart(itemId));
   };
 
-  // remove item from cart
-  const handleRemove = (id) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(updatedCartItems);
+  // function for increasing an item's quantity
+  const handleIncrementQuantity = (itemId) => {
+    dispatch(incrementQuantity(itemId));
   };
 
+  // function for decreasing an item's quantity
+  const handleDecrementQuantity = (itemId) => {
+    dispatch(decrementQuantity(itemId));
+  };
+
+  // render the cart items using the CartItem component
   return (
     <div>
       <h2>Shopping Cart</h2>
       {cartItems.map((item) => (
-        // pass props
         <CartItem
           key={item.id}
           item={item}
-          onIncrease={handleIncrease}
-          onDecrease={handleDecrease}
-          onRemove={handleRemove}
+          onRemove={handleRemoveFromCart}
+          onIncrease={handleIncrementQuantity}
+          onDecrease={handleDecrementQuantity}
         />
       ))}
       <h3>
@@ -46,6 +59,7 @@ const Cart = () => {
           0
         )}
       </h3>
+      <button onClick={handleClearCart}>Clear Cart</button>
     </div>
   );
 };

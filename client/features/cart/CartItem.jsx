@@ -1,17 +1,22 @@
 import React from "react";
 
+// CartItem component is responsible for displaying information about an individual item in the cart
+// allows user to modify the item's quantity or remove it
+
 const CartItem = ({ item, onRemove, onIncrease, onDecrease }) => {
   const { id, name, price, imageUrl, quantity } = item;
 
-
+  // function to handle increasing the quantity of an item
   const handleIncrease = () => {
     onIncrease(id);
   };
 
+  // function to handle decreasing the quantity of an item
   const handleDecrease = () => {
     onDecrease(id);
   };
 
+  // function to handle removing an item from the cart
   const handleRemove = () => {
     onRemove(id);
   };
