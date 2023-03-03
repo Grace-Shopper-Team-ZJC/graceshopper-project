@@ -7,12 +7,11 @@ const Guest = require("./models/Guest");
 const Order = require("./models/Order");
 const Product = require("./models/Product");
 const Cart = require("./models/Cart");
-const CTable = require("./models/CheckoutTable")
+const CartItem = require("./models/CartItem");
 
 //associations could go here!
 User.hasMany(Order);
 Order.belongsTo(User);
-
 
 User.hasOne(Cart);
 Cart.belongsTo(User);
@@ -20,20 +19,15 @@ Cart.belongsTo(User);
 Guest.hasOne(Cart);
 Cart.belongsTo(Guest);
 
-Product.hasMany(CTable)
-CTable.belongsTo(Product);
+Product.hasMany(CartItem);
+CartItem.belongsTo(Product);
 
-Cart.hasMany(CTable);
-CTable.belongsTo(Cart);
-
+Cart.hasMany(CartItem);
+CartItem.belongsTo(Cart);
 
 ///
 Order.hasMany(Cart);
 Cart.belongsTo(Order);
-
-
-
-
 
 module.exports = {
   db,
@@ -43,6 +37,6 @@ module.exports = {
     Order,
     Product,
     Cart,
-    CTable,
+    CartItem,
   },
 };
