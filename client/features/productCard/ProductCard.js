@@ -1,11 +1,13 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, Link } from "react-redux";
 
-const ProductCard = ({ product }) => {
-  const dispatch = useDispatch();
+const ProductCard = ({ product, addToCart, deleteFromCart }) => {
+  const handleAddToCart = () => {
+    dispatch(addToCart(product.id));
+  };
 
-  const handleDeleteProduct = () => {
-    dispatch(deleteProduct(product.id));
+  const handleDeleteFromCart = () => {
+    dispatch(deleteFromCart(product.id));
   };
 
   return (
@@ -17,15 +19,18 @@ const ProductCard = ({ product }) => {
           alt={product.name}
         />
         <div>
-          <h3 onClick={() => (window.location = `/products/${product.id}`)}>
-            {product.name}
-          </h3>
-          <p>{product.description}</p>
+          <Link to={`/products/${product.id}`} className="card-details">
+            <h3 className="product-name">{product.name}</h3>
+            <p className="product-price">{product.price}</p>
+          </Link>
         </div>
       </div>
 
       <div>
-        <button className="delete-button" onClick={handleDeleteproduct}>
+        <button className="add-button" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
+        <button className="delete-button" onClick={handleDeleteFromCart}>
           x
         </button>
       </div>
