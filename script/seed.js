@@ -10,7 +10,7 @@ const Guest = require("../server/db/models/Guest");
 const Order = require("../server/db/models/Order");
 const Product = require("../server/db/models/Product");
 const Cart = require("../server/db/models/Cart");
-const CTable = require("../server/db/models/CheckoutTable");
+const CartItem = require("../server/db/models/CartItem");
 
 //fake code below/////////////
 /* 
