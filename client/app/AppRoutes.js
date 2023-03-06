@@ -39,11 +39,13 @@ const AppRoutes = () => {
             path="/signup"
             element={<AuthForm name="signup" displayName="Sign Up" />}
           />
-          
+
           {/* placeholder route for testing admin view */}
-          <Route 
-            path = "/users"
-            element={<UserManagement name="users" displayName="Admin: view users"/>} 
+          <Route
+            path="/users"
+            element={
+              <UserManagement name="users" displayName="Admin: view users" />
+            }
           />
         </Routes>
       )}
