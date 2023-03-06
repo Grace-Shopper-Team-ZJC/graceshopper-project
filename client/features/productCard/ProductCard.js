@@ -15,11 +15,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="main-card-wrapper">
       <div className="card">
-        <img
-          className="product-image"
-          src={product.imageURL}
-          alt={product.name}
-        />
+        <img className="product-image" src={product.image} alt={product.name} />
         <div>
           <Link to={`/products/${product.id}`} className="card-details">
             <h3 className="product-name">{product.name}</h3>
@@ -29,12 +25,12 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div>
-        <button className="add-button" onClick={handleAddToCart}>
+        {/* <button className="add-button" onClick={handleAddToCart}>
           Add to Cart
-        </button>
-        <button className="delete-button" onClick={handleDeleteFromCart}>
+        </button> */}
+        {/* <button className="delete-button" onClick={handleDeleteFromCart}>
           x
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import React from "react";
 // allows user to modify the item's quantity or remove it
 
 const CartItem = ({ item, onRemove, onIncrease, onDecrease }) => {
-  const { id, name, price, imageUrl, quantity } = item;
+  const { id, name, price, image, quantity } = item;
 
   // function to handle increasing the quantity of an item
   const handleIncrease = () => {
@@ -23,7 +23,7 @@ const CartItem = ({ item, onRemove, onIncrease, onDecrease }) => {
 
   return (
     <div>
-      <img src={imageUrl} alt={name} />
+      <img src={image} alt={name} />
       <div>
         <h3>{name}</h3>
         <p>${price}</p>

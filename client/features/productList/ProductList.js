@@ -8,29 +8,29 @@ const ProductList = () => {
   const products = useSelector((state) => state.products.products);
   const status = useSelector((state) => state.products.status);
   const error = useSelector((state) => state.products.error);
-};
 
-useEffect(() => {
-  if (status === "idle") {
-    dispatch(fetchProducts());
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
   }
-}, [status, dispatch]);
 
-if (status === "loading") {
-  return <div>Loading...</div>;
-}
+  if (status === "failed") {
+    return <div>{error}</div>;
+  }
 
-if (status === "failed") {
-  return <div>{error}</div>;
-}
-
-return (
-  <div>
-    {products.map((product) => (
-      // product.name
-      <ProductCard key={product.id} product={product} />
-    ))}
-  </div>
-);
+  return (
+    <div>
+      {products.map((product) => (
+        // product.name
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
+};
 
 export default ProductList;
