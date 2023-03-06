@@ -1,6 +1,7 @@
 import { configureStore, createReducer } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import authReducer from "../features/auth/authSlice";
+import ProductListSlice from "../features/productList/ProductListSlice";
 
 // import userManageSlice from "../features/userManagement/userManageSlice";
 import productManageSlice from "../features/productManagement/productManageSlice";
@@ -11,7 +12,7 @@ const store = configureStore({
   reducer: {
     auth: authReducer,
     users: userManageSlice,
-    products: productManageSlice,
+    products: ProductListSlice,
     cart: cartReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
