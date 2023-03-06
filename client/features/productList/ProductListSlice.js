@@ -77,7 +77,7 @@ const productListSlice = createSlice({
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.products = [...state.products, ...action.payload];
+      state.products = action.payload;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.status = "failed";

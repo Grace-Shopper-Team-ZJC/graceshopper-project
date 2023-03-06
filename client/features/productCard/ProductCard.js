@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch, Link } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({ product, addToCart, deleteFromCart }) => {
-  const handleAddToCart = () => {
-    dispatch(addToCart(product.id));
-  };
+const ProductCard = ({ product }) => {
+  console.log(product);
+  // const handleAddToCart = () => {
+  //   dispatch(addToCart(product.id));
+  // };
 
-  const handleDeleteFromCart = () => {
-    dispatch(deleteFromCart(product.id));
-  };
+  // const handleDeleteFromCart = () => {
+  //   dispatch(deleteFromCart(product.id));
+  // };
 
   return (
     <div className="main-card-wrapper">

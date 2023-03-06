@@ -127,8 +127,8 @@ const seed = async () => {
       quantity: 3,
     });
 
-    const item1 = await CTable.create({ desiredQuantity: 2 });
-    const item2 = await CTable.create({ desiredQuantity: 1 });
+    const item1 = await CartItem.create({ quantity: 2 });
+    const item2 = await CartItem.create({ quantity: 1 });
 
     await item1.setProduct(apples);
     await item2.setProduct(oranges);
