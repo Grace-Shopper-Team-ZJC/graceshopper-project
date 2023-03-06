@@ -9,6 +9,8 @@ const ProductList = () => {
   const error = useSelector((state) => state.products.error);
 };
 
+let status;
+
 useEffect(() => {
   if (status === "idle") {
     dispatch(fetchProducts());

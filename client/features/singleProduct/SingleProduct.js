@@ -11,6 +11,8 @@ const SingleProduct = () => {
   const error = useSelector((state) => state.singleProduct.error);
 };
 
+let status;
+
 useEffect(() => {
   if (status === "idle") {
     dispatch(fetchSingleProduct(id));
