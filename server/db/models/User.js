@@ -15,6 +15,11 @@ const User = db.define("user", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  role: {
+    type: Sequelize.ENUM("admin", "user"),
+    defaultValue: "user",
+    allowNull: false,
+  },
 });
 
 module.exports = User;
@@ -28,7 +33,9 @@ User.prototype.correctPassword = function (candidatePwd) {
 };
 
 User.prototype.generateToken = function () {
-  return jwt.sign({ id: this.id }, process.env.JWT);
+  const token = jwt.sign({ id: this.id, role: this.role }, process.env.JWT);
+  console.log("-------->", token);
+  return token;
 };
 
 /**
