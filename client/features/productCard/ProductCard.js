@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToCart, removeItem } from "../cart/CartSlice";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
-  // const handleAddToCart = () => {
-  //   dispatch(addToCart(product.id));
-  // };
+  const dispatch = useDispatch();
 
-  // const handleDeleteFromCart = () => {
-  //   dispatch(deleteFromCart(product.id));
-  // };
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeItem(product.id));
+  };
 
   return (
     <div className="main-card-wrapper">
@@ -23,14 +25,13 @@ const ProductCard = ({ product }) => {
           </Link>
         </div>
       </div>
-
       <div>
-        {/* <button className="add-button" onClick={handleAddToCart}>
+        <button className="add-button" onClick={handleAddToCart}>
           Add to Cart
-        </button> */}
-        {/* <button className="delete-button" onClick={handleDeleteFromCart}>
-          x
-        </button> */}
+        </button>
+        <button className="remove-button" onClick={handleRemoveFromCart}>
+          Remove from Cart
+        </button>
       </div>
     </div>
   );
