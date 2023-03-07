@@ -24,15 +24,21 @@ const Navbar = () => {
   }
 
   return (
-    <div>
-      <h1>Grace Shopper Team ZJC</h1>
-      <nav>
+    <div className="navbar">
+      <h1 className="logo">Grace Shopper Team ZJC</h1>
+      <nav className="nav">
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/products">All Products</Link>
-            <Link to="/cart">Cart ({cartTotal})</Link>
+            <Link className="nav-link" to="/home">
+              Home
+            </Link>
+            <Link className="nav-link" to="/products">
+              All Products
+            </Link>
+            <Link className="nav-link" to="/cart">
+              Cart ({cartTotal})
+            </Link>
             <button type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
@@ -40,10 +46,18 @@ const Navbar = () => {
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/products">All Products</Link>
-            <Link to="/cart">Cart ({cartTotal})</Link>
+            <Link className="nav-link" to="/login">
+              Login
+            </Link>
+            <Link className="nav-link" to="/signup">
+              Sign Up
+            </Link>
+            <Link className="nav-link" to="/products">
+              All Products
+            </Link>
+            <Link className="nav-link" to="/cart">
+              Cart ({cartTotal})
+            </Link>
           </div>
         )}
       </nav>

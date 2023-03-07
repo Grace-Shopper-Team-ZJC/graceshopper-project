@@ -41,8 +41,14 @@ const Cart = () => {
 
   // render the cart items using the CartItem component
   return (
-    <div>
+    <div className="cart-container">
       <h2>Shopping Cart</h2>
+      <h3>
+        Total: $
+        {cartItems
+          .reduce((total, item) => total + item.price * item.quantity, 0)
+          .toFixed(2)}
+      </h3>
       {cartItems.map((item) => (
         <CartItem
           key={item.id}
@@ -52,14 +58,9 @@ const Cart = () => {
           onDecrease={handleDecrementQuantity}
         />
       ))}
-      <h3>
-        Total:{" "}
-        {cartItems.reduce(
-          (total, item) => total + item.price * item.quantity,
-          0
-        )}
-      </h3>
-      <button onClick={handleClearCart}>Clear Cart</button>
+      <button className="clear-cart" onClick={handleClearCart}>
+        Clear Cart
+      </button>
     </div>
   );
 };

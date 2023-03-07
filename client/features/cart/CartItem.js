@@ -22,15 +22,23 @@ const CartItem = ({ item, onRemove, onIncrease, onDecrease }) => {
   };
 
   return (
-    <div>
-      <img src={image} alt={name} />
-      <div>
-        <h3>{name}</h3>
-        <p>${price}</p>
-        <p>Quantity: {quantity}</p>
-        <button onClick={handleIncrease}>+</button>
-        <button onClick={handleDecrease}>-</button>
-        <button onClick={handleRemove}>Remove</button>
+    <div className="main-cart-wrapper">
+      <div className="cart-item">
+        <img className="product-image" src={image} alt={name} />
+        <div>
+          <h3 className="product-name">{name}</h3>
+          <p className="product-price">${price}</p>
+          <p className="product-quantity">Quantity: {quantity}</p>
+          <button className="add-button" onClick={handleIncrease}>
+            +
+          </button>
+          <button className="remove-button-minus" onClick={handleDecrease}>
+            -
+          </button>
+          <button className="remove-button" onClick={handleRemove}>
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );
