@@ -87,14 +87,17 @@ const seed = async () => {
     const billy = await User.create({
       username: "billy1234",
       password: "password123",
+      role: "user",
     });
     const lisa = await User.create({
       username: "lisalisa",
       password: "123pwpw",
+      role: "admin",
     });
     const davis = await User.create({
       username: "davis1999",
       password: "1999pass",
+      role: "user",
     });
 
     const guest1 = await Guest.create();
