@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectCartItems,
   clearCart,
-  removeFromCart,
+  removeItem,
   incrementQuantity,
   decrementQuantity,
 } from "./cartSlice";
@@ -26,7 +26,7 @@ const Cart = () => {
 
   // function for removing an item from the cart
   const handleRemoveFromCart = (itemId) => {
-    dispatch(removeFromCart(itemId));
+    dispatch(removeItem(itemId));
   };
 
   // function for increasing an item's quantity
