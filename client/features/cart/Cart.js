@@ -8,7 +8,7 @@ import {
   removeItem,
   incrementQuantity,
   decrementQuantity,
-} from "./cartSlice";
+} from "./CartSlice";
 
 // Import the CartItem component
 import CartItem from "./CartItem";
